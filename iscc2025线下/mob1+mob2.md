@@ -1,5 +1,6 @@
 <h1 id="r2O97">mob1</h1>
 <h2 id="mqGhE">java层分析</h2>
+
 ```java
 package com.example.xxmobile01;
 
@@ -75,6 +76,7 @@ public class A {
 java层代码少，主要在于check()，Jformat()，以及两个native方法
 
 <h3 id="InKvt">check()方法</h3>
+
 ```java
     public boolean check(String str) {
         if (str.length() >= 13 && str.substring(0, 5).equals("ISCC{") && str.substring(str.length() - 1).equals("}")) {
@@ -95,6 +97,7 @@ if语句判断
 取出中间主体 inner = flag.sybstring(5,flag.length() - 1) 返回Jformat(inner)方法
 
 <h3 id="zdMya">Jformat()方法</h3>
+
 ```java
     private boolean Jformat(String str) {
         try {
@@ -426,6 +429,7 @@ LABEL_9:
 ```
 
 <h4 id="thsq1">encrypt_block</h4>
+
 ```c
 __int64 __fastcall encrypt_block(unsigned int *a1, int a2)
 {
@@ -552,7 +556,8 @@ S盒：
 ```
 
 <h2 id="qmpeP">exp:</h2>
-```c
+
+```python
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
@@ -736,6 +741,7 @@ if __name__ == "__main__":
 
 <h2 id="Kcfci">java层分析</h2>
 <h3 id="AHHOA">MainActivity类</h3>
+
 ```java
 package com.example.pokemon;
 
@@ -851,6 +857,7 @@ public class MainActivity extends AppCompatActivity {
 对UI界面等进行了设置
 
 <h3 id="UUQV2">BadgeStore类（含so层分析）</h3>
+
 ```java
 package com.example.pokemon;
 
@@ -933,6 +940,7 @@ unlockedCount 和 allUnlocked 方法设置通关条件，徽章id固定为1-8，
 
 
 <h4 id="pcLUs">nativeGetBadgeLog（so层）</h4>
+
 ```c
 __int64 __fastcall Java_com_example_pokemon_BadgeStore_nativeGetBadgeLog(__int64 a1, __int64 a2, int a3)
 {
@@ -999,6 +1007,7 @@ dword_15AF0是int数组
 猜测是flag的取值，一共8个对应8个道馆，取道馆flag的片段组成
 
 <h3 id="pLHdi"> Badge类 / BadgeRepository类</h3>
+
 ```java
 package com.example.pokemon;
 
@@ -1044,6 +1053,7 @@ public class BadgeRepository {
 设置题目，以及flag密文的比对
 
 <h3 id="v8AtZ">ChallengeActivity类</h3>
+
 ```java
 package com.example.pokemon;
 
@@ -1193,6 +1203,7 @@ Rule forBadge = RuleRepository.forBadge(this.badgeId);
 ```
 
 <h3 id="tX0ag">Rule类</h3>
+
 ```java
 package com.example.pokemon.verifier;
 
@@ -1215,6 +1226,7 @@ public class Rule {
 设定关卡数据规则
 
 <h3 id="IQCwQ">PipelineVerifier类</h3>
+
 ```java
 package com.example.pokemon.verifier;
 
@@ -1250,6 +1262,7 @@ public class PipelineVerifier {
 批量执行器，同时进行比对
 
 <h3 id="hf6Wi">RuleRepository类（道馆通关对应的加密）</h3>
+
 ```java
 package com.example.pokemon.verifier;
 
@@ -1306,6 +1319,7 @@ public class RuleRepository {
 根据不同徽章(道馆)的id进入不同的操作规则
 
 <h3 id="SfsNu">FinalFlagActivity类（终极试炼）</h3>
+
 ```python
 package com.example.pokemon;
 
@@ -1640,6 +1654,7 @@ public class COp implements Op {
 ```
 
 <h5 id="k8Wbt">nativeProcess（so层）</h5>
+
 ```c
 __int64 __fastcall Java_com_example_pokemon_verifier_op_COp_nativeProcess(
         __int64 a1,
@@ -2167,6 +2182,7 @@ public class DOp implements Op {
 ```
 
 <h5 id="cpbBC">so层</h5>
+
 ```c
 __int64 __fastcall Java_com_example_pokemon_verifier_op_DOp_nativeGetKey(
     __int64 a1,
@@ -2336,6 +2352,7 @@ public class EOp implements Op {
 ```
 
 <h5 id="Jbv92">nativeGetKey2（so层）</h5>
+
 ```c
 __int64 __fastcall Java_com_example_pokemon_verifier_op_EOp_nativeGetKey2(__int64 a1)
 {
@@ -2352,15 +2369,15 @@ __int64 __fastcall Java_com_example_pokemon_verifier_op_EOp_nativeGetKey2(__int6
 
 拿到key2
 
-```c
+```plain
 0x6455565553565173
 ```
 
-```c
+```plain
 73 51 56 53 55 56 55 64
 ```
 
-```c
+```plain
 64 55 56 55 53 56 51 73
 ```
 
@@ -2368,6 +2385,7 @@ __int64 __fastcall Java_com_example_pokemon_verifier_op_EOp_nativeGetKey2(__int6
 
 <h2 id="Xm89R">exp:</h2>
 <h3 id="MSbaE">密文</h3>
+
 ```plain
 1, "岩石道馆", 045e0c251301214e
 2, "华蓝道馆", Cr5aE0bqu\"
@@ -2391,6 +2409,7 @@ __int64 __fastcall Java_com_example_pokemon_verifier_op_EOp_nativeGetKey2(__int6
 + 再把 `plain` 按 UTF-8 解码 → 明文字符串
 
 <h4 id="pxAmT">exp:</h4>
+
 ```python
 KEY_AOP = "Togepi".encode("utf-8")
 ANSWER1_HEX = "045e0c251301214e"
@@ -2458,6 +2477,7 @@ ps：都是leet形式的通关字符
 6. 按 UTF-8 解码成原始输入
 
 <h4 id="BRHtc">exp:</h4>
+
 ```python
 ANSWER2 = 'Cr5aE0bqu"'  # 注意最后是一个双引号字符
 
@@ -2533,7 +2553,8 @@ Bu1b@5aur#
 ![](images/1763388294719-9aaa798b-f83e-443c-bb93-28d0d625a9f1.png)
 
 <h3 id="tuiwA">枯叶道馆 (COp)</h3>
-```c
+
+```plain
 3, "枯叶道馆", 01850468411918C2358D31BE
 ```
 
@@ -2545,6 +2566,7 @@ Bu1b@5aur#
 + 得到原始 UTF-8 字节，再 decode 成字符串
 
 <h4 id="ofLg3">exp:</h4>
+
 ```python
 # solve_badge3_cop.py
 KEY = b"Psyduck"  # res/raw/key2.txt 的内容
@@ -2620,6 +2642,7 @@ Ch4rm@nd3r$
 ![](images/1763465855846-bc693205-7d33-407c-9ebe-ccf8b82dc55f.png)
 
 <h3 id="mnp4P">金黄道馆（DOp）</h3>
+
 ```c
 4, "金黄道馆", C44805F320117A596D6AE7B88B73CF0A
 ```
@@ -2635,6 +2658,7 @@ iv:
 ```
 
 <h4 id="jDWgw">exp:</h4>
+
 ```python
 # decode_dop_badge4.py
 from Crypto.Cipher import AES
@@ -2760,6 +2784,7 @@ SqU1rt!3%
 ![](images/1763466748879-360e5a93-5c03-44e6-ac89-13fe7952107e.png)
 
 <h3 id="GtsHe">玉虹道馆（EOp）</h3>
+
 ```c
 5, "玉虹道馆", 050237671445B5169675F7
 ```
@@ -2795,6 +2820,7 @@ key2在so层已经拿到
 ```
 
 <h4 id="tTok4">exp:</h4>
+
 ```python
 # eop_decrypt_full.py
 from typing import List
@@ -2933,6 +2959,7 @@ J1gg1yPuFF^
 ![](images/1763468433400-07d7b8d4-7c49-49db-8c63-22f4dfe561aa.png)
 
 <h3 id="ZONZP">浅红道馆（AOp+BOp+COp）</h3>
+
 ```c
 6, "浅红道馆", 24D8F250A275A414C6D692476031236636
 ```
@@ -2940,6 +2967,7 @@ J1gg1yPuFF^
 前面已经有逆的脚本了，整合一下
 
 <h4 id="zA3JP">exp:</h4>
+
 ```c
 # solve_badge6.py
 def ror8(x, r):
@@ -3025,11 +3053,13 @@ G3ng@r!0
 ![](images/1763468863889-dac62f4a-222b-4928-9754-9272c61acd63.png)
 
 <h3 id="XWTCY">红莲道馆（BOp+COp+DOp）</h3>
+
 ```c
 7, "红莲道馆", 07337BE63BB7975B1183D3E71173989C
 ```
 
 <h4 id="gfFpE">exp:</h4>
+
 ```python
 # solve_badge7_simple.py
 from Crypto.Cipher import AES
@@ -3117,11 +3147,13 @@ if __name__ == "__main__":
 ![](images/1763469278000-32445210-b822-42f4-9712-5141a1b8e530.png)
 
 <h3 id="wT8VU">常青道馆（COp+DOp+EOp）</h3>
-```c
+
+```plain
 8, "常青道馆", 6115F65510916254717581C527D67233510281B570F175542165A19270965523162251D270F605647112E68227B11223B172B1A540E14264B142F645279125F3
 ```
 
 <h4 id="kuodf">exp:</h4>
+
 ```python
 from typing import List
 from Crypto.Cipher import AES
@@ -3256,7 +3288,7 @@ G3ng@r!0
 Sn0r1@x*
 ```
 
-```python
+```plain
 0x15848  "Third, sixth；"
 0x14984  "Fourth, tenth；"
 0x157DE  "Fourth, ninth；"
@@ -3269,7 +3301,7 @@ Sn0r1@x*
 
 按位取值：
 
-```python
+```plain
 1: kh
 2: b#
 3: r3
